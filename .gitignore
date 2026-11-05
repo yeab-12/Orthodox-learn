@@ -1,0 +1,20 @@
+# Dependencies and build output
+node_modules/
+**/node_modules/
+**/dist/
+
+# Local environment files (keep .env.example)
+.env
+**/.env
+
+# Runtime data and uploaded media
+backend/data/
+backend/uploads/videos/
+backend/uploads/tmp/
+
+# Logs and editor files
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

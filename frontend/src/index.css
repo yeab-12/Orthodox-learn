@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bottom-nav: 4rem;
+  --topbar: 3.5rem;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --feed-h: calc(100dvh - var(--bottom-nav) - var(--safe-bottom) - var(--topbar));
+}
+@media (min-width: 1024px) { :root { --feed-h: 100dvh; } }
+
+/* The app shell leaves room for the fixed mobile navigation and the iOS home indicator. */
+.app-main { padding-bottom: calc(var(--bottom-nav) + var(--safe-bottom)); }
+.bottom-nav {
+  height: calc(var(--bottom-nav) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+}
+@media (min-width: 1024px) { .app-main { padding-bottom: 0; } }
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  @apply bg-cream-100 font-sans text-navy-900 antialiased;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23C9A24B' stroke-opacity='0.12' stroke-width='1'%3E%3Cpath d='M36 22v28M22 36h28'/%3E%3Cpath d='M30 28l12 12M42 28L30 40'/%3E%3C/g%3E%3C/svg%3E");
+}
+:lang(am) { line-height: 1.75; }
+
+/* Manuscript border: a repeating diamond-and-dot band, echoing Ge'ez manuscript frames. */
+.manuscript-band {
+  height: 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14' viewBox='0 0 28 14'%3E%3Cpath d='M14 1l6 6-6 6-6-6z' fill='none' stroke='%23C9A24B' stroke-width='1.4'/%3E%3Ccircle cx='0' cy='7' r='1.6' fill='%239A3324'/%3E%3Ccircle cx='28' cy='7' r='1.6' fill='%239A3324'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+/* gold-700 gives at least 3:1 against both cream and navy backgrounds. */
+.focus-ring { @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-700; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .lesson-progress { animation: none !important; transform: scaleX(0); }
+}

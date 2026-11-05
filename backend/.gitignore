@@ -1,0 +1,9 @@
+node_modules/
+.env
+data/
+uploads/*
+!uploads/.gitkeep
+!uploads/demo/
+uploads/demo/*
+!uploads/demo/.gitkeep
+!uploads/demo/sample.mp4
